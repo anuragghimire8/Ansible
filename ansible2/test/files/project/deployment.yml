@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: project
+  template:
+    metadata:
+      labels:
+        app: project
+    spec:
+      containers:
+      - name: project
+        image: anuragghimire/project:latest   # Docker Hub image
+        imagePullPolicy: Always                # Always pull from Docker Hub
+        ports:
+        - containerPort: 80

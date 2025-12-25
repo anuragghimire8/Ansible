@@ -1,0 +1,15 @@
+---
+# handlers file for test
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+    - name: Copy files with owner with permissions
+      ansible.builtin.copy:
+        src: ./files/project
+        dest: /var/www/html
+        owner: root
+        group: root
+        mode: '0644'
+        recurse: yes
